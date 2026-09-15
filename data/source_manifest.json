@@ -1,0 +1,789 @@
+{
+  "manifest_version": "1.0.0",
+  "project": "momentlab-organizational-memory-chatbot",
+  "source_snapshot_date": "2026-09-15",
+  "notion_root_url": "https://app.notion.com/p/3cde19d6afb881f2a504d9b43b9a5037",
+  "inventory_method": "Notion root and container child-page references; leaf body conversion is deferred to stage 2.",
+  "sources": [
+    {
+      "source_id": "hub-ai-festival",
+      "title": "AI 경영 학술제",
+      "source_type": "project_hub",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3cde19d6afb881f2a504d9b43b9a5037",
+      "parent_source_id": "",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "excluded_from_runtime"
+    },
+    {
+      "source_id": "dev-topic-context",
+      "title": "주제 및 학술제 컨텍스트",
+      "source_type": "project_document",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dce19d6afb8802f9309ca8f3a42726f",
+      "parent_source_id": "hub-ai-festival",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "excluded_from_runtime"
+    },
+    {
+      "source_id": "container-program-context",
+      "title": "프로그램 Context",
+      "source_type": "mixed_container",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881148a00e7c4f131598d",
+      "parent_source_id": "hub-ai-festival",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "requires_split",
+      "notes": "회사 설정과 실험 안내가 혼재한다. 2단계에서 회사 설정만 runtime으로 분리한다."
+    },
+    {
+      "source_id": "dev-task-list",
+      "title": "해야 할 일",
+      "source_type": "project_plan",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881aea50de41f27d56bb0",
+      "parent_source_id": "hub-ai-festival",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "excluded_from_runtime"
+    },
+    {
+      "source_id": "container-integrated-context",
+      "title": "최종 통합 Context | 18개 원천 프로젝트 통합",
+      "source_type": "mixed_container",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881689359e9f1c4258e1f",
+      "parent_source_id": "hub-ai-festival",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "requires_split",
+      "notes": "통합 관계·개발 설명과 검색용 경험 연결 정보가 혼재한다."
+    },
+    {
+      "source_id": "container-preparation-package",
+      "title": "MVP 구현 전 준비 패키지 | 데이터·정책·평가 기준",
+      "source_type": "development_container",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8819f9d5fd6c48850fa38",
+      "parent_source_id": "hub-ai-festival",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "excluded_from_runtime"
+    },
+    {
+      "source_id": "manual-index",
+      "title": "모먼트랩 표준 업무 매뉴얼 | 전사·부서별 규칙",
+      "source_type": "manual_index",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88195bb0ffa15cc92851a",
+      "parent_source_id": "hub-ai-festival",
+      "status": "current",
+      "effective_date": "2026-09-14",
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "dev-mvp-implementation",
+      "title": "MVP 구현 준비",
+      "source_type": "implementation_plan",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dce19d6afb88128ab45faf0f305eaa1",
+      "parent_source_id": "hub-ai-festival",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "excluded_from_runtime"
+    },
+    {
+      "source_id": "ML-01",
+      "title": "ML-01 대학 축제 음료 브랜드 체험부스",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881168f97d085ecef7bec",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-01"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-02",
+      "title": "ML-02 루미에르 화장품 팝업스토어",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881e49eb9c61d099fba10",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-02"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-03",
+      "title": "ML-03 청년 공공기관 취업박람회",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881f8944dc22189f36ba4",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-03"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-04",
+      "title": "ML-04 넥스트칩 신제품 하이브리드 론칭",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881efb3b3ee62882bd307",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-04"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-05",
+      "title": "ML-05 온기재단 후원 갈라",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb8819697aaef6f39ef019f",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-05"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-06",
+      "title": "ML-06 바다마을 푸드 페스티벌",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881ceb506de3721ad7639",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-06"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-07",
+      "title": "ML-07 아시아 미래경영 국제 콘퍼런스",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb88173a67bfbf4271e194d",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-07"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-08",
+      "title": "ML-08 그린모터스 임직원 패밀리데이",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881249545c79a292a6ee8",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-08"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-09",
+      "title": "ML-09 캠퍼스 챔피언스 e스포츠 대회",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb8817e9f85c686b73d2f70",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-09"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-10",
+      "title": "ML-10 숨결 현대미술전 오프닝",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb881978f09f1f3f96687ec",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-10"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-11",
+      "title": "ML-11 프레시업 전국 샘플링 로드쇼",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb8814b83b5d1a33d6f2658",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-11"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "ML-12",
+      "title": "ML-12 경영대 동문 네트워킹 나이트",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3d8e19d6afb88108b972d3326941690b",
+      "parent_source_id": "container-program-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-12"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-01",
+      "title": "U-01 실물 제작·자산 인수인계",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881bdbb0cdfa0a410836e",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-02",
+        "ML-10"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-02",
+      "title": "U-02 혼잡·설치업체 선정",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8812ea111c4a2b35002af",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-01",
+        "P-01"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-03",
+      "title": "U-03 야외행사 기상·통합 운영",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8818f950ddabbe33108ae",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-08",
+        "P-03",
+        "P-05"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-04",
+      "title": "U-04 개인정보 최소수집·권한",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8818a8062dc06dfffe475",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-03"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-05",
+      "title": "U-05 외부 콘텐츠 권리·승인",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88167a6d2c8860356ee77",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "P-02",
+        "P-04"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-06",
+      "title": "U-06 하이브리드 송출·공통 인프라",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881b0a66fd43b62e2cd99",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-04",
+        "P-06"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-07",
+      "title": "U-07 후원 결제·정산",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881a1b1dada79aca6f3b4",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-05"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-08",
+      "title": "U-08 푸드 전력·냉장 안전",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881b98f79d648c35ec69b",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-06"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-09",
+      "title": "U-09 국제 일정·시간대 버전",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881348f49d3b003ffe834",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-07"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-10",
+      "title": "U-10 대회 규정·동의 버전",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88140afb6d55ba3c90e09",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-09"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-11",
+      "title": "U-11 전국 재고 재배치",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88148b9f0f6e4fccf8607",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-11"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "U-12",
+      "title": "U-12 식이·접근성 최소 권한",
+      "source_type": "integrated_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8810b98cefc717e8f1b56",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "ML-12"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "container-p-source-records",
+      "title": "P-01~P-06 원천 상세 기록",
+      "source_type": "source_project_index",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8818091fae3fa541deebc",
+      "parent_source_id": "container-integrated-context",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "excluded_from_runtime"
+    },
+    {
+      "source_id": "P-01",
+      "title": "원천 상세 기록 | P-01 스포츠 브랜드 야간 러닝 페스티벌",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88166b07acec563b56ceb",
+      "parent_source_id": "container-p-source-records",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "U-02"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "P-02",
+      "title": "원천 상세 기록 | P-02 OTT 브랜드 대학생 숏폼 콘텐츠 공모전",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881ecb7c2d3f272b855ab",
+      "parent_source_id": "container-p-source-records",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "U-05"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "P-03",
+      "title": "원천 상세 기록 | P-03 아웃도어 브랜드 한강 캠핑 체험행사",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881edb7d8f1cd201cf642",
+      "parent_source_id": "container-p-source-records",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "U-03"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "P-04",
+      "title": "원천 상세 기록 | P-04 인디 뮤직 브랜드 라이브 세션",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8817ea0f6c959c01b10f6",
+      "parent_source_id": "container-p-source-records",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "U-05"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "P-05",
+      "title": "원천 상세 기록 | P-05 여름 해변 스포츠 브랜드 체험행사",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8817b82eaffd231b15be6",
+      "parent_source_id": "container-p-source-records",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "U-03"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "P-06",
+      "title": "원천 상세 기록 | P-06 연말 브랜드 크리에이터 어워즈",
+      "source_type": "source_project",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88127b13cc56567e2db4f",
+      "parent_source_id": "container-p-source-records",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [
+        "U-06"
+      ],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "MAN-01",
+      "title": "01 전사 공통 업무 매뉴얼 | 결재·보고·변경·인계",
+      "source_type": "manual",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881ae88d8dab46425a6fd",
+      "parent_source_id": "manual-index",
+      "status": "current",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "MAN-02",
+      "title": "02 경영지원팀 업무 매뉴얼 | 계약·권한·문서·기억",
+      "source_type": "manual",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881b182f5dc20f970c1e7",
+      "parent_source_id": "manual-index",
+      "status": "current",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "MAN-03",
+      "title": "03 프로젝트기획팀 업무 매뉴얼 | 착수·컨펌·현장·종료",
+      "source_type": "manual",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881edb65bd8085a1ac3ff",
+      "parent_source_id": "manual-index",
+      "status": "current",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "MAN-04",
+      "title": "04 마케팅팀 업무 매뉴얼 | 전략·콘텐츠 승인·성과",
+      "source_type": "manual",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881eaaeb7f5eeffee1dd7",
+      "parent_source_id": "manual-index",
+      "status": "current",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "MAN-05",
+      "title": "05 재무·운영팀 업무 매뉴얼 | 예산·구매·정산·인프라",
+      "source_type": "manual",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8817c9d86d567154bd28a",
+      "parent_source_id": "manual-index",
+      "status": "current",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "FORM-01",
+      "title": "06 공통 업무 양식 | 결재·컨펌·보고·변경·인계",
+      "source_type": "work_template",
+      "data_scope": "runtime",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88154be95ec00bc2b3505",
+      "parent_source_id": "manual-index",
+      "status": "current",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion"
+    },
+    {
+      "source_id": "PREP-01",
+      "title": "01 규정 데이터 | 현재 8·구버전 4·예외 3",
+      "source_type": "mixed_page",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881218c90da4fa7595661",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "requires_split",
+      "notes": "실제 규정과 MVP 기대 동작을 runtime/evaluation으로 분리해야 한다."
+    },
+    {
+      "source_id": "PREP-02",
+      "title": "02 기억 포착 대화 데이터 | 저장 12·제외 5",
+      "source_type": "evaluation_dataset",
+      "data_scope": "evaluation",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8819f8dd1ec1f756459c7",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion",
+      "notes": "대화와 기대 저장 판정을 평가 fixture로만 사용한다."
+    },
+    {
+      "source_id": "PREP-03",
+      "title": "03 불완전 종료보고서 5종 | 회고 질문 정답",
+      "source_type": "evaluation_dataset",
+      "data_scope": "evaluation",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8817f9ae4f1aa6a86f4e5",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion",
+      "notes": "불완전 보고서와 기대 질문을 평가 fixture로 사용한다."
+    },
+    {
+      "source_id": "PREP-04",
+      "title": "04 조직도·역할·권한 | 민감자료와 차단 정답",
+      "source_type": "mixed_page",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb88150b0dec10153213b22",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "requires_split",
+      "notes": "조직·권한·민감자료는 runtime, 차단 정답은 evaluation으로 분리한다."
+    },
+    {
+      "source_id": "PREP-05",
+      "title": "05 조직기억 카드 스키마·상태 전환·저장 기준",
+      "source_type": "governance_spec",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8816ca673f68e4072b540",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion",
+      "notes": "검색 corpus가 아니라 애플리케이션 규칙과 DB 스키마로 구현한다."
+    },
+    {
+      "source_id": "PREP-06",
+      "title": "06 기억 포착·회고 질문 Trigger 명세",
+      "source_type": "workflow_spec",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8817fa0d1d61c3cfda600",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion",
+      "notes": "Agentic workflow 구현 명세다."
+    },
+    {
+      "source_id": "PREP-07",
+      "title": "07 U-13 신규 종합 사례 | 글로벌 비공개 딜러 컨벤션",
+      "source_type": "mixed_page",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8819d8a7dd76c6ca28eb0",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "requires_split",
+      "notes": "U-13 프로젝트 Context와 기대 판정을 runtime/evaluation으로 분리한다."
+    },
+    {
+      "source_id": "PREP-08",
+      "title": "08 A·B·C 비교 실험 | 15문항·10점 채점표",
+      "source_type": "evaluation_dataset",
+      "data_scope": "evaluation",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb8812eab15ec7579ad7405",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion",
+      "notes": "정답·채점표는 runtime 검색에서 완전히 제외한다."
+    },
+    {
+      "source_id": "PREP-09",
+      "title": "09 데이터셋 명세·MVP 구현 인수 기준",
+      "source_type": "acceptance_spec",
+      "data_scope": "development",
+      "notion_url": "https://app.notion.com/p/3dbe19d6afb881728eaed4d7ed6da5a0",
+      "parent_source_id": "container-preparation-package",
+      "status": "",
+      "effective_date": null,
+      "allowed_roles": [],
+      "related_projects": [],
+      "conversion_status": "ready_for_conversion",
+      "notes": "구현 및 테스트 인수 기준이다."
+    }
+  ]
+}
+
