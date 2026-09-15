@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://momentlab.local/schemas/eval_case.schema.json",
+  "title": "MomentLab evaluation case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "category",
+    "question",
+    "user_role",
+    "project_id",
+    "expected_answer",
+    "allowed_answers",
+    "forbidden_content",
+    "evidence_source_ids",
+    "scoring"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^(Q|C|N|IR)-[0-9]{2}$"
+    },
+    "category": {
+      "enum": [
+        "fact",
+        "rationale",
+        "lesson",
+        "version",
+        "permission",
+        "memory_capture",
+        "memory_suppression",
+        "retrospective"
+      ]
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "user_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected_answer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowed_answers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_content": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "scoring": {
+      "type": "object",
+      "required": [
+        "conclusion_accuracy",
+        "rationale",
+        "conditions",
+        "source_status_date",
+        "permission_privacy"
+      ],
+      "properties": {
+        "conclusion_accuracy": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "rationale": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "conditions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "source_status_date": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "permission_privacy": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

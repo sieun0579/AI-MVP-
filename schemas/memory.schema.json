@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://momentlab.local/schemas/memory.schema.json",
+  "title": "MomentLab organizational memory card",
+  "type": "object",
+  "required": [
+    "memory_id",
+    "title",
+    "memory_type",
+    "occurred_at",
+    "departments",
+    "tasks",
+    "situation",
+    "decision",
+    "rationale",
+    "outcome",
+    "lessons",
+    "applicable_conditions",
+    "exception_conditions",
+    "source_ids",
+    "author_id",
+    "reviewer_id",
+    "approver_id",
+    "allowed_roles",
+    "trust_status",
+    "status_reason",
+    "valid_from",
+    "review_due_at",
+    "supersedes",
+    "superseded_by"
+  ],
+  "properties": {
+    "memory_id": {
+      "type": "string",
+      "pattern": "^MEM-[0-9]{4}-[0-9]{3,}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "memory_type": {
+      "enum": [
+        "decision",
+        "failure",
+        "solution",
+        "know_how",
+        "regulation_interpretation"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "departments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "situation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_conditions": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alternatives_considered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "causes": {
+      "type": "object",
+      "properties": {
+        "direct": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contributing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "structural": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "solutions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "applicable_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "exception_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "reuse_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "project_id",
+          "result"
+        ],
+        "properties": {
+          "project_id": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "source_locations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "author_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approver_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowed_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "trust_status": {
+      "enum": [
+        "temporary",
+        "author_confirmed",
+        "under_review",
+        "current",
+        "review_required",
+        "superseded",
+        "rejected",
+        "disabled"
+      ]
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "review_due_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "superseded_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}
+

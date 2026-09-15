@@ -1,0 +1,18 @@
+[project]
+name = "momentlab-memory-chatbot"
+version = "0.4.0"
+requires-python = ">=3.11"
+dependencies = [
+  "streamlit>=1.40,<2",
+]
+
+[dependency-groups]
+dev = [
+  "jsonschema>=4.23,<5",
+  "pytest>=8.3,<9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["src"]

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://momentlab.local/schemas/converted_document.schema.json",
+  "title": "MomentLab converted context document",
+  "type": "object",
+  "required": [
+    "document_id",
+    "source_id",
+    "title",
+    "source_type",
+    "data_scope",
+    "status",
+    "effective_date",
+    "allowed_roles",
+    "related_projects",
+    "source",
+    "content",
+    "conversion"
+  ],
+  "properties": {
+    "document_id": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "source_type": {"type": "string", "minLength": 1},
+    "data_scope": {"enum": ["runtime", "development", "evaluation"]},
+    "status": {"type": "string"},
+    "effective_date": {"type": ["string", "null"], "format": "date"},
+    "allowed_roles": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "related_projects": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "source": {
+      "type": "object",
+      "required": ["notion_url", "page_last_edited_at", "path", "verification_state"],
+      "properties": {
+        "notion_url": {"type": "string", "pattern": "^https://app\\.notion\\.com/p/[0-9a-f]{32}$"},
+        "page_last_edited_at": {"type": ["string", "null"], "format": "date-time"},
+        "path": {"type": "string"},
+        "verification_state": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "content": {
+      "type": "object",
+      "required": ["format", "text", "char_count", "sha256"],
+      "properties": {
+        "format": {"const": "notion_markdown"},
+        "text": {"type": "string", "minLength": 1},
+        "char_count": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "conversion": {
+      "type": "object",
+      "required": ["mode", "included_sections"],
+      "properties": {
+        "mode": {"enum": ["full_page", "section_split"]},
+        "included_sections": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

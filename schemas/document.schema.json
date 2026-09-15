@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://momentlab.local/schemas/document.schema.json",
+  "title": "MomentLab source inventory entry",
+  "type": "object",
+  "required": [
+    "source_id",
+    "title",
+    "source_type",
+    "data_scope",
+    "notion_url",
+    "parent_source_id",
+    "status",
+    "effective_date",
+    "allowed_roles",
+    "related_projects",
+    "conversion_status"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_scope": {
+      "enum": [
+        "runtime",
+        "evaluation",
+        "development"
+      ]
+    },
+    "notion_url": {
+      "type": "string",
+      "pattern": "^https://app\\.notion\\.com/p/[0-9a-f]{32}$"
+    },
+    "parent_source_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "effective_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "allowed_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "related_projects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "conversion_status": {
+      "enum": [
+        "pending",
+        "ready_for_conversion",
+        "requires_split",
+        "excluded_from_runtime"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
