@@ -11,8 +11,10 @@
 - 원문·문서명·상태·Notion 출처 표시
 - 근거가 없을 때 `확인 가능한 데이터가 없습니다.` 출력
 - Streamlit 기반 브라우저 채팅 화면
+- Ollama 기반 로컬 AI 답변 생성
 
-현재 버전은 로컬 LLM을 연결하지 않았으며 자연어 답변을 생성하지 않는다.
+검색된 Context를 근거로 로컬 AI가 질문에 직접 답한다. 근거가 없는 질문에는
+`확인 가능한 데이터가 없습니다.`라고 답한다.
 
 ## macOS에서 실행
 
@@ -20,10 +22,15 @@
 
 ```bash
 uv sync --group dev
+ollama pull qwen2.5:3b
 uv run streamlit run app.py
 ```
 
 터미널에 표시되는 `http://localhost:8501` 주소를 브라우저에서 연다.
+
+`ollama pull`은 처음 한 번만 실행하면 된다. Ollama가 설치되어 있지 않다면
+[Ollama 다운로드 페이지](https://ollama.com/download)에서 설치한다. Ollama 없이도
+앱은 실행되지만, 로컬 AI 답변 대신 검색된 근거 문장을 표시한다.
 
 ## 테스트
 
