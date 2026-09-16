@@ -32,7 +32,9 @@ def test_known_question_displays_source_results():
     assert any("답변" in item.value for item in app.markdown)
     assert any("경영지원팀 / 프로젝트기획팀 / 마케팅팀 / 재무·운영팀" in item.value for item in app.markdown)
     assert any("가상 기업 설정" in item.label for item in app.expander)
-    assert len(app.expander) == 1
+    assert len(app.expander) == 3
+    assert [item.label.split(".", maxsplit=1)[0] for item in app.expander] == ["1", "2", "3"]
+    assert any("<mark>모먼트랩</mark>" in item.value for item in app.markdown)
     assert any("Notion 원문 열기" in item.value for item in app.markdown)
 
 

@@ -1,6 +1,7 @@
 """MomentLab organizational-memory chatbot prototype UI."""
 
 from pathlib import Path
+import html
 import json
 import os
 import re
@@ -31,7 +32,21 @@ def load_engine() -> ContextSearchEngine:
     return ContextSearchEngine.from_project(ROOT)
 
 
-def render_result_card(result: dict) -> None:
+def highlight_question_terms(text: str, question: str) -> str:
+    """Escape source text and emphasize meaningful terms from the question."""
+    terms = {
+        term
+        for term in re.findall(r"[가-힣]{2,}|[a-z0-9]+", question.lower())
+        if term not in {"관련", "대한", "무엇", "뭐야", "알려줘", "어떻게", "경우", "하는", "있는"}
+    }
+    escaped_text = html.escape(text)
+    if not terms:
+        return escaped_text
+    pattern = re.compile("|".join(re.escape(term) for term in sorted(terms, key=len, reverse=True)), re.IGNORECASE)
+    return pattern.sub(lambda match: f"<mark>{match.group(0)}</mark>", escaped_text)
+
+
+def render_result_card(result: dict, question: str) -> None:
     label = f"{result['rank']}. {result['title']} · {result['section_title']}"
     with st.expander(label, expanded=result["rank"] == 1):
         status = result["status"] or "미지정"
@@ -41,7 +56,11 @@ def render_result_card(result: dict) -> None:
             f"적용일: {effective_date} · 검색 점수: {result['score']} · "
             f"질문어 일치율: {result.get('query_coverage', 0):.0%}"
         )
-        st.text(result["text"])
+        st.markdown(
+            "<div style='white-space: pre-wrap; line-height: 1.6;'>"
+            f"{highlight_question_terms(result['text'], question)}</div>",
+            unsafe_allow_html=True,
+        )
         st.markdown(f"[Notion 원문 열기]({result['notion_url']})")
 
 
@@ -173,6 +192,23 @@ def build_answer(engine: ContextSearchEngine, question: str, response: dict) -> 
     return None
 
 
+def related_contexts(answer: dict, response: dict, limit: int = 3) -> list[dict]:
+    """Show a compact, deduplicated set of evidence in relevance order."""
+    candidates = [answer["source"], *response["results"]]
+    selected: list[dict] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        identity = candidate.get("chunk_id") or f"{candidate['source_id']}::{candidate['section_title']}"
+        if identity in seen:
+            continue
+        seen.add(identity)
+        displayed = {**candidate, "rank": len(selected) + 1}
+        selected.append(displayed)
+        if len(selected) == limit:
+            break
+    return selected
+
+
 st.title("🧠 MomentLab 조직 기억")
 st.write("모먼트랩의 프로젝트·규정·업무 경험에서 관련 원문을 찾습니다.")
 st.info(
@@ -212,17 +248,15 @@ for exchange in reversed(st.session_state.history):
         else:
             if response["found"]:
                 st.success(response["message"])
-            primary_result = answer["source"]
             st.markdown("#### 답변")
             st.write(answer["text"])
-            st.caption(
-                "근거: "
-                f"{primary_result['title']} · {primary_result['section_title']}"
-            )
             if "comparison_count" in answer:
                 st.caption(f"비교 범위: 총예산이 기록된 프로젝트 {answer['comparison_count']}건")
-            st.caption("가장 관련도 높은 근거 원문입니다.")
-            render_result_card(primary_result)
+            contexts = related_contexts(answer, response)
+            st.markdown("##### 참고하면 좋은 Context")
+            st.caption("질문과의 관련도가 높은 순서로 최대 3개를 표시합니다. 노란색은 질문 핵심어입니다.")
+            for context in contexts:
+                render_result_card(context, exchange["question"])
 
 question = st.chat_input("예: 야외 행사에서 바람이 강할 때 어떻게 대응했어?")
 
