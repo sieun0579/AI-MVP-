@@ -66,3 +66,11 @@ def test_uses_a_bottom_pinned_chat_input():
     assert len(app.chat_input) == 1
     assert not app.text_input
     assert not any(button.label == "Context 검색" for button in app.button)
+
+
+def test_newest_question_is_displayed_first():
+    app = create_app_test()
+    submit_question(app, "모먼트랩 부서 조직")
+    submit_question(app, "예산이 가장 비쌌던 행사 알려줘")
+    questions = [item.children[0].value for item in app.chat_message if item.name == "user"]
+    assert questions == ["예산이 가장 비쌌던 행사 알려줘", "모먼트랩 부서 조직"]

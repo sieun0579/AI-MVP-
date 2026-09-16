@@ -38,7 +38,8 @@ def render_result_card(result: dict) -> None:
         effective_date = result["effective_date"] or "미지정"
         st.caption(
             f"문서 ID: {result['source_id']} · 상태: {status} · "
-            f"적용일: {effective_date} · 관련도: {result['score']}"
+            f"적용일: {effective_date} · 검색 점수: {result['score']} · "
+            f"질문어 일치율: {result.get('query_coverage', 0):.0%}"
         )
         st.text(result["text"])
         st.markdown(f"[Notion 원문 열기]({result['notion_url']})")
@@ -131,7 +132,8 @@ def generate_local_answer(question: str, results: list[dict]) -> str | None:
         "아래 조직 Context만 근거로 사용해 사용자의 질문에 한국어로 직접 답하세요. "
         "검색 문서나 Context를 나열하거나 읽어주지 말고, 결론을 첫 문장에 말하세요. "
         "근거에 없는 사실은 추측하지 말고 '확인 가능한 데이터가 없습니다.'라고 답하세요. "
-        "답변은 최대 세 문장으로 간결하게 작성하세요.\n\n"
+        "질문을 충분히 해결할 만큼 설명하되, 불필요한 반복은 하지 마세요. "
+        "필요하면 목록을 사용해도 됩니다.\n\n"
         f"질문: {question}\n\n{context}"
     )
     payload = json.dumps(
@@ -197,7 +199,7 @@ except (FileNotFoundError, ValueError) as exc:
     st.error(f"검색 데이터를 불러올 수 없습니다: {exc}")
     st.stop()
 
-for exchange in st.session_state.history:
+for exchange in reversed(st.session_state.history):
     with st.chat_message("user"):
         st.write(exchange["question"])
     with st.chat_message("assistant"):
